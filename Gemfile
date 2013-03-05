@@ -9,6 +9,4 @@ group :development, :test do
   gem 'rspec'
 end
 
-group :production do
-  gem 'thin'
-end
+gem 'thin'
