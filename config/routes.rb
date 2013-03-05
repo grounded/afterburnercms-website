@@ -1,7 +1,5 @@
 Afterburnercms::Application.routes.draw do
-  root :to => "users#index"
-
-  resources :users, :only => [:index, :create]
-
+  get "/" => "users#index"
+  post "/" => "users#create", :as => :users
   get "/thank_you" => "users#thank_you", :as => :thank_you
 end
