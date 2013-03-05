@@ -1,6 +1,4 @@
-$LOAD_PATH << './lib'
+# This file is used by Rack-based servers to start the application.
 
-require "bundler/setup"
-require './application.rb'
-
-run Website
+require ::File.expand_path('../config/environment',  __FILE__)
+run Afterburnercms::Application

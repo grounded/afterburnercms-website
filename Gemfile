@@ -1,12 +1,13 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem "sinatra"
+gem 'rails', '4.0.0.beta1'
+gem 'pg'
 
-gem "haml"
-gem "sass"
-
-group :development, :test do
-  gem 'rspec'
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'thin'
+gem 'jquery-rails'
