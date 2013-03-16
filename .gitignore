@@ -14,3 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# So Ugis Ozols doesn't accidentally commit his password any more...
+config/database.yml
