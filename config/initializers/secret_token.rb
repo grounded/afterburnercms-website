@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-AfterburnerWebsite::Application.config.secret_token = ENV['SECRET_TOKEN'] || SecureRandom.hex
+AfterburnerWebsite::Application.config.secret_key_base = ENV['SECRET_TOKEN'] || SecureRandom.hex
