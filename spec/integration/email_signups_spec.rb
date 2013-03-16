@@ -9,7 +9,7 @@ describe "Frontend" do
     end
 
     it "gets the title from the repository" do
-      title = "Sign up to receive a notification" 
+      title = "Sign up to receive a notification"
       Hyperion.save(:kind => :page, :title => title)
       visit new_email_signup_path
       within "h1" do

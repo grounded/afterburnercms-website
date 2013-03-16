@@ -5,6 +5,8 @@ unless ENV['TRAVIS']
   end
 end
 
-require 'bundler/setup'
-Bundler.require :default, :test
+ENV["RAILS_ENV"] ||= 'test'
+require File.expand_path('../config/application', File.dirname(__FILE__))
+
+require 'capybara/rspec'
 require 'rspec/rails'

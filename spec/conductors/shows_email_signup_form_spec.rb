@@ -1,5 +1,5 @@
 require 'tiny_spec_helper'
-require 'conductors/shows_email_signup_form.rb'
+require 'conductors/shows_email_signup_form'
 require 'ostruct'
 
 describe ShowsEmailSignupForm do

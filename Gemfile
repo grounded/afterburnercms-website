@@ -32,7 +32,6 @@ gem 'pry'
 gem 'pry-rails'
 
 group :test do
-  gem 'rspec'
   gem 'rspec-rails'
   gem 'capybara'
   unless ENV['TRAVIS']
