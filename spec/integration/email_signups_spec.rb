@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe "Frontend" do
-  before(:each) { Abc::Adapters.enable_datastore! }
+  before { Abc::Adapters.enable_datastore! }
   describe "GET /email_signups/new" do
     it "shows the form" do
       visit new_email_signup_path
@@ -19,7 +19,7 @@ describe "Frontend" do
   end
 
   describe "POST /email_signups" do
-    it "should receive info from the form" do
+    it "receives info from the form" do
       post email_signups_path(:method => :post), :email_signup => { :email => "rob@afterburnercms.com" }
       response.body.should have_content("You signed up as rob@afterburnercms.com")
     end

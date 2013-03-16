@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Afterburnercms::Application.load_tasks
+AfterburnerWebsite::Application.load_tasks
