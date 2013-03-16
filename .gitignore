@@ -17,3 +17,6 @@
 
 # So Ugis Ozols doesn't accidentally commit his password any more...
 config/database.yml
+
+.sass-cache/
+coverage/

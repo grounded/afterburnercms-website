@@ -1,0 +1,19 @@
+.row
+  .span6.offset3.well
+    .alert.alert-info Use the form below to sign up to our mailing list
+    -# .alert.alert-danger You must specify a name and a valid email!
+
+    = form_tag(main_app.email_signups_path, :method => :post, :html => {:class => 'form-horizontal'}) do
+      .control-group
+        = label_tag :'email_signup[name]', "Name", :class => 'control-label'
+        .controls
+          = text_field_tag :'email_signup[name]', nil, :placeholder => 'Name'
+
+      .control-group
+        = label_tag :'email_signup[email]', "Email", :class => 'control-label'
+        .controls
+          = text_field_tag :'email_signup[email]', nil, :placeholder => 'Email'
+
+      .control-group
+        .controls
+          = submit_tag "Sign up", :class => 'btn'
