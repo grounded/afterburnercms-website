@@ -7,5 +7,4 @@ end
 
 require 'bundler/setup'
 Bundler.require :default, :test
-require 'capybara/rspec'
 require 'rspec/rails'

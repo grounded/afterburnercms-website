@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem 'pg'
+gem 'activerecord-jdbcpostgresql-adapter', :platform => :jruby
 gem 'thin'
 gem 'strong_parameters', '~> 0.2.0'
 
@@ -24,4 +25,18 @@ end
 
 gem 'jquery-rails'
 gem 'abc', :path => '../afterburnercms'
+gem 'abc-adapters', :path => '../afterburnercms/adapters'
 gem 'haml'
+
+gem 'pry'
+gem 'pry-rails'
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'capybara'
+  unless ENV['TRAVIS']
+    gem 'simplecov'
+  end
+end
+

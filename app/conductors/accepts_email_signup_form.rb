@@ -1,4 +1,3 @@
-require 'abc'
 require 'ostruct'
 
 class AcceptsEmailSignupForm < ::Abc::BaseConductor

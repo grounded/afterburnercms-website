@@ -1,4 +1,11 @@
 require 'tiny_spec_helper'
+
+module Abc; 
+  class BaseConductor
+    def call(params, opts = {}); new.to_response; end;
+  end
+end
+
 require 'conductors/accepts_email_signup_form'
 
 describe AcceptsEmailSignupForm do
