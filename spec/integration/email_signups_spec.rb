@@ -4,8 +4,11 @@ describe "Frontend" do
   before { Abc::Adapters.enable_datastore! }
   describe "GET /email_signups/new" do
     it "shows the form" do
-      visit '/email_signups/new'#new_email_signup_path
-      page.should have_content("Sign up")
+      visit new_email_signup_path
+      within 'form' do
+        page.should have_content('Name')
+        page.should have_content('Email')
+      end
     end
 
     it "gets the title from the repository" do
