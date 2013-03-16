@@ -1,6 +1,6 @@
 .row
   .span6.offset3.well
-    %h1= @data[:page][:title]
+    %h1= @data.page.title
     -# .alert.alert-danger You must specify a name and a valid email!
 
     = form_tag(main_app.email_signups_path, :method => :post, :html => {:class => 'form-horizontal'}) do
