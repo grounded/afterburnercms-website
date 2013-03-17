@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', github: 'rails/rails'
 gem 'pg', :platform => :ruby
+gem 'hyperion-postgres'
 gem 'activerecord-jdbcpostgresql-adapter', :platform => :jruby
 gem 'puma'
 
