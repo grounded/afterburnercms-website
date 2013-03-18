@@ -19,10 +19,13 @@ feature "Email signups" do
     end
   end
 
-  scenario "POST /email_signups" do
+  scenario "submitting the form" do
+    email = "rob@afterburnercms.com"
     visit new_email_signup_path
-    fill_in "Email", with: "rob@afterburnercms.com"
+    fill_in "Email", :with => email
     click_button "Sign up"
     expect(page).to have_text("You signed up as rob@afterburnercms.com")
+    Hyperion.find_by_kind(:email_signup, :filter => [[:email, '=', email]]).keys.should include(:email)
   end
+
 end
