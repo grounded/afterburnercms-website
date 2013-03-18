@@ -1,4 +1,5 @@
 require 'tiny_spec_helper'
+require 'conductors/accepts_email_signup_form'
 
 module Abc
   class BaseConductor
@@ -6,12 +7,20 @@ module Abc
   end
 end
 
-require 'conductors/accepts_email_signup_form'
+class MockEmailSignUp
+  def self.call(data, options={}); data; end
+end
 
 describe AcceptsEmailSignupForm do
   subject { AcceptsEmailSignupForm }
   let(:params) { {:email_signup => {:email => "rob@afterburnercms.com" }} }
-  let(:mocks) { {} }
+  let(:mocks) {
+    {
+      :interface_classes => {
+        :email_signup => MockEmailSignUp
+      }
+    }
+  }
   let(:result) { subject.call(params, mocks) }
 
   it "returns a hash" do
@@ -23,7 +32,8 @@ describe AcceptsEmailSignupForm do
   end
 
   it "hands off its form data to the interactor" do
-    pending
+    mocks[:interface_classes][:email_signup].should_receive(:call)
+    result
   end
 
   context "when validations fail" do
