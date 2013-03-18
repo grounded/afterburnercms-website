@@ -9,18 +9,32 @@ end
 
 class MockEmailSignUp
   def self.call(data, options={}); data; end
+  def self.get_errors; "abc"; end
+end
+
+class MockRepository
+  def self.store(obj); @obj = obj.to_hash; end
+  def self.search; [@obj]; end
 end
 
 describe AcceptsEmailSignupForm do
   subject { AcceptsEmailSignupForm }
-  let(:params) { {:email_signup => {:email => "rob@afterburnercms.com" }} }
-  let(:mocks) {
-    {
-      :interface_classes => {
-        :email_signup => MockEmailSignUp
-      }
+  let(:params) {{
+    :email_signup => {
+      :email => "rob@afterburnercms.com",
+      :name => "garrett"
     }
-  }
+  }}
+  let(:data) {{
+    :email => "rob@afterburnercms.com",
+    :name => "garrett"
+  }}
+  let(:mocks) {{
+    :interface_classes => {
+      :email_signup => MockEmailSignUp
+    },
+    :repository_class => MockRepository
+  }}
   let(:result) { subject.call(params, mocks) }
 
   it "returns a hash" do
@@ -32,13 +46,19 @@ describe AcceptsEmailSignupForm do
   end
 
   it "hands off its form data to the interactor" do
-    mocks[:interface_classes][:email_signup].should_receive(:call)
+    mocks[:interface_classes][:email_signup].should_receive(:call).with(data)
     result
   end
 
   context "when validations fail" do
     it "should set errors" do
-      pending
+      builder = mocks[:interface_classes][:email_signup]
+      builder.call({
+        :email => '',
+        :name => ''
+      })
+      builder.get_errors.should include("abc")
+      result
     end
   end
 

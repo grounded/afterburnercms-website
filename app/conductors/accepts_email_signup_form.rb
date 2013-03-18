@@ -1,5 +1,6 @@
 require 'ostruct'
-require 'interactors/builds_email_signup'
+require 'interactors/builds_email_sign_up'
+# require 'adapters/persistence/repositories/email_sign_up'
 
 class AcceptsEmailSignupForm < ::Abc::BaseConductor
   def to_response
@@ -7,11 +8,15 @@ class AcceptsEmailSignupForm < ::Abc::BaseConductor
   end
 
   def data
+    build_email_signup
+  end
+
+  def build_email_signup
     options[:interface_classes][:email_signup].call(params[:email_signup])
   end
 
   protected
-  attr_accessor :params, :options
+  attr_accessor :params, :options, :errors
   attr_writer :data
   def initialize(params, options)
     self.params  = params
@@ -23,6 +28,7 @@ class AcceptsEmailSignupForm < ::Abc::BaseConductor
       :interface_classes => {
         :email_signup => BuildsEmailSignUp
       }
+      #:repository_class => ::Adapters::Persistence::Repositories::EmailSignUp
     }
   end
 
