@@ -16,7 +16,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 077031691df0070be39a965a7eee07a9e5b1c4fe
+  revision: c4a7c31581c8386198317a2385f9c7d462c18497
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -66,22 +66,14 @@ GIT
       sprockets-rails (~> 2.0.0.rc0)
       tilt (~> 1.3)
 
-PATH
-  remote: ../afterburnercms
-  specs:
-    abc (0.0.1)
-
-PATH
-  remote: ../afterburnercms/adapters
-  specs:
-    abc-adapters (0.0.1)
-      abc (~> 0.0.1)
-      hyperion-api
-      hyperion-sqlite
-
 GEM
   remote: https://rubygems.org/
   specs:
+    abc (0.0.2)
+    abc-adapters (0.0.2)
+      abc (~> 0.0.2)
+      hyperion-api
+      hyperion-sqlite
     activerecord-deprecated_finders (0.0.3)
     addressable (2.3.3)
     arel (4.0.0.beta2)
@@ -193,7 +185,7 @@ GEM
     thor (0.17.0)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.5)
+    tilt (1.3.6)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
@@ -210,8 +202,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  abc!
-  abc-adapters!
+  abc (~> 0.0.2)
+  abc-adapters (~> 0.0.2)
   activerecord-jdbcpostgresql-adapter
   bootstrap-sass (~> 2.3.0.1)
   capybara

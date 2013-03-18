@@ -16,8 +16,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'abc', :path => '../afterburnercms'
-gem 'abc-adapters', :path => '../afterburnercms/adapters'
+gem 'abc', '~> 0.0.2'
+gem 'abc-adapters', '~> 0.0.2'
 gem 'haml', :github => 'haml/haml', :branch => 'stable'
 
 group :development do
