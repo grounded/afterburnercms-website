@@ -1,5 +1,7 @@
 # AfterburnerCMS Website
 
+[![Code Climate](https://codeclimate.com/github/grounded/afterburnercms-website.png)](https://codeclimate.com/github/grounded/afterburnercms-website)
+
 ## Development
 To run the tests:
 
