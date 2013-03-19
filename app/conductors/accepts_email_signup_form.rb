@@ -1,6 +1,6 @@
 require 'ostruct'
-require 'interactors/builds_email_signup'
-require 'repositories/email_signup'
+require 'builds_email_signup'
+require 'email_signup_repository'
 
 class AcceptsEmailSignupForm < ::Abc::BaseConductor
   def to_response
@@ -11,7 +11,8 @@ class AcceptsEmailSignupForm < ::Abc::BaseConductor
   protected
   attr_accessor :params, :options, :errors, :interactors, :repositories
   attr_writer :data
-  def initialize(params, options)
+
+  def initialize(params, options = {})
     self.params  = params
     self.options = defaults.merge(options)
     
@@ -21,8 +22,8 @@ class AcceptsEmailSignupForm < ::Abc::BaseConductor
 
   def defaults
     {
-      :interactor_classes => { :email_signup => BuildsEmailSignup },
-      :repository_classes => { :email_signup => EmailSignupRepository }
+      :interactor_classes => { :email_signup => ::BuildsEmailSignup },
+      :repository_classes => { :email_signup => ::EmailSignupRepository }
     }
   end
 
@@ -31,11 +32,11 @@ class AcceptsEmailSignupForm < ::Abc::BaseConductor
   end
 
   def build_email_signup
-    @interactors.email_signup.call(params[:email_signup])
+    @email_signup ||= interactors.email_signup.call(params[:email_signup])
   end
 
   def store!(entities)
-    entities.each_pair {|kind, attributes| @repositories.send(kind).store(attributes) }
+    entities.each_pair {|kind, attributes| repositories.send(kind).store(attributes) }
   end
 
 

@@ -1,5 +1,5 @@
 require 'tiny_spec_helper'
-require 'conductors/accepts_email_signup_form'
+require 'accepts_email_signup_form'
 
 class MockInteractor
   def self.call(data, options={}); data; end
@@ -11,6 +11,7 @@ class MockRepository
 end
 
 describe AcceptsEmailSignupForm do
+  subject { ::AcceptsEmailSignupForm }
   let(:data) { { :email => "rob@afterburnercms.com", :name => "Rob" } }
   let(:params) { { :email_signup => data } }
 
@@ -18,7 +19,7 @@ describe AcceptsEmailSignupForm do
     :interactor_classes => { :email_signup => MockInteractor },
     :repository_classes => { :email_signup => MockRepository } } }
 
-  let(:result) { ::AcceptsEmailSignupForm.call(params, mocks) }
+  let(:result) { subject.call(params, mocks) }
 
   it "returns a hash" do
     expect(result).to be_kind_of Hash
@@ -44,9 +45,10 @@ describe AcceptsEmailSignupForm do
   context "when validations are okay" do
     it "hands off data to the repository" do
       fake_entity = {:blah => "yep, blah"}
-      subject.stub!(:data).with({:email_signup => fake_entity})
+      conductor = subject.send(:new, params, mocks)
+      conductor.stub!(:data).and_return({:email_signup => fake_entity})
       mocks[:repository_classes][:email_signup].should_receive(:store).with(fake_entity)
-      result
+      conductor.to_response
     end
   end
 

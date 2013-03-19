@@ -1,5 +1,5 @@
 require 'tiny_spec_helper'
-require 'interactors/builds_email_signup'
+require 'builds_email_signup'
 
 describe BuildsEmailSignup do
   let(:data) { { :email => "garrett@afterburnercms.com", :name => "garrett" } }

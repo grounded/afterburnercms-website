@@ -1,4 +1,4 @@
-require 'entities/email_signup'
+require 'email_signup'
 
 class BuildsEmailSignup < Abc::BaseInteractor
   attr_reader :email_signup
