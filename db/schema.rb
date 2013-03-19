@@ -11,11 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130318022217) do
+ActiveRecord::Schema.define(version: 20130319064736) do
 
   create_table "email_signups", force: true do |t|
     t.string "name",  null: false
     t.string "email", null: false
+  end
+
+  create_table "pages", force: true do |t|
+    t.string "title", null: false
   end
 
 end

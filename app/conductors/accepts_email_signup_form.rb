@@ -1,35 +1,42 @@
 require 'ostruct'
-require 'interactors/builds_email_sign_up'
-# require 'adapters/persistence/repositories/email_sign_up'
+require 'interactors/builds_email_signup'
+require 'repositories/email_signup'
 
 class AcceptsEmailSignupForm < ::Abc::BaseConductor
   def to_response
-    { :email_signup => OpenStruct.new(data) }
-  end
-
-  def data
-    build_email_signup
-  end
-
-  def build_email_signup
-    options[:interface_classes][:email_signup].call(params[:email_signup])
+    store!(data)
+    { :email_signup => OpenStruct.new(data[:email_signup]) }
   end
 
   protected
-  attr_accessor :params, :options, :errors
+  attr_accessor :params, :options, :errors, :interactors, :repositories
   attr_writer :data
   def initialize(params, options)
     self.params  = params
     self.options = defaults.merge(options)
+    
+    self.interactors = OpenStruct.new(self.options[:interactor_classes])
+    self.repositories = OpenStruct.new(self.options[:repository_classes])
   end
 
   def defaults
     {
-      :interface_classes => {
-        :email_signup => BuildsEmailSignUp
-      }
-      #:repository_class => ::Adapters::Persistence::Repositories::EmailSignUp
+      :interactor_classes => { :email_signup => BuildsEmailSignup },
+      :repository_classes => { :email_signup => EmailSignupRepository }
     }
   end
+
+  def data
+    {:email_signup => build_email_signup.to_hash }
+  end
+
+  def build_email_signup
+    @interactors.email_signup.call(params[:email_signup])
+  end
+
+  def store!(entities)
+    entities.each_pair {|kind, attributes| @repositories.send(kind).store(attributes) }
+  end
+
 
 end

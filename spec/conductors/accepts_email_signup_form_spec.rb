@@ -1,41 +1,24 @@
 require 'tiny_spec_helper'
 require 'conductors/accepts_email_signup_form'
 
-module Abc
-  class BaseConductor
-    def call(params, opts = {}); new.to_response; end;
-  end
-end
-
-class MockEmailSignUp
+class MockInteractor
   def self.call(data, options={}); data; end
-  def self.get_errors; "abc"; end
 end
 
 class MockRepository
-  def self.store(obj); @obj = obj.to_hash; end
+  def self.store(obj); @obj = obj; end
   def self.search; [@obj]; end
 end
 
 describe AcceptsEmailSignupForm do
-  subject { AcceptsEmailSignupForm }
-  let(:params) {{
-    :email_signup => {
-      :email => "rob@afterburnercms.com",
-      :name => "garrett"
-    }
-  }}
-  let(:data) {{
-    :email => "rob@afterburnercms.com",
-    :name => "garrett"
-  }}
-  let(:mocks) {{
-    :interface_classes => {
-      :email_signup => MockEmailSignUp
-    },
-    :repository_class => MockRepository
-  }}
-  let(:result) { subject.call(params, mocks) }
+  let(:data) { { :email => "rob@afterburnercms.com", :name => "Rob" } }
+  let(:params) { { :email_signup => data } }
+
+  let(:mocks) { {
+    :interactor_classes => { :email_signup => MockInteractor },
+    :repository_classes => { :email_signup => MockRepository } } }
+
+  let(:result) { ::AcceptsEmailSignupForm.call(params, mocks) }
 
   it "returns a hash" do
     expect(result).to be_kind_of Hash
@@ -46,25 +29,24 @@ describe AcceptsEmailSignupForm do
   end
 
   it "hands off its form data to the interactor" do
-    mocks[:interface_classes][:email_signup].should_receive(:call).with(data)
+    continuer = double "Blah"
+    continuer.stub!(:to_hash)
+    mocks[:interactor_classes][:email_signup].should_receive(:call).with(data).and_return(continuer)
     result
   end
 
   context "when validations fail" do
     it "should set errors" do
-      builder = mocks[:interface_classes][:email_signup]
-      builder.call({
-        :email => '',
-        :name => ''
-      })
-      builder.get_errors.should include("abc")
-      result
+      pending
     end
   end
 
   context "when validations are okay" do
-    it "stores the data" do
-      pending
+    it "hands off data to the repository" do
+      fake_entity = {:blah => "yep, blah"}
+      subject.stub!(:data).with({:email_signup => fake_entity})
+      mocks[:repository_classes][:email_signup].should_receive(:store).with(fake_entity)
+      result
     end
   end
 
