@@ -1,0 +1,15 @@
+language: ruby
+bundler_args: --without development
+script: bundle exec rspec spec --colour
+rvm:
+  - 2.0.0
+  - 1.9.3
+  - rbx-19mode
+  - jruby-19mode
+notifications:
+  email: false
+  irc:
+    use_notice: true
+    skip_join: true
+    channels:
+      - "irc.freenode.org#afterburner"
