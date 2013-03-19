@@ -20,7 +20,6 @@ gem 'jquery-rails'
 gem 'afterburner', :github => 'grounded/afterburner'
 gem 'abc', '~> 0.0.2'
 gem 'abc-adapters', '~> 0.0.2'
-gem 'abc-frontend', :path => '../afterburnercms/delivery/frontend'
 gem 'haml', :github => 'haml/haml', :branch => 'stable'
 
 group :development do
