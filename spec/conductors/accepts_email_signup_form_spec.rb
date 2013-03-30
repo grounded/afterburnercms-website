@@ -9,10 +9,9 @@ end
 require 'conductors/accepts_email_signup_form'
 
 describe AcceptsEmailSignupForm do
-  subject { AcceptsEmailSignupForm }
   let(:params) { {:email_signup => {:email => "rob@afterburnercms.com" }} }
   let(:mocks) { {} }
-  let(:result) { subject.call(params, mocks) }
+  let(:result) { AcceptsEmailSignupForm.new(params, mocks).call }
 
   it "returns a hash" do
     expect(result).to be_kind_of Hash
