@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+unless ENV['TRAVIS']
+  ruby "1.9.3"
+end
 
 gem 'rails', github: 'rails/rails'
 gem 'pg', :platform => :ruby
