@@ -4,12 +4,12 @@ require 'ostruct'
 
 class EmailSignupsController < ApplicationController
   def new
-    @data = OpenStruct.new(ShowsEmailSignupForm.new(params).call)
+    @data = ShowsEmailSignupForm.new(params).call
   end
 
   def create
     # begin
-    @data = OpenStruct.new(AcceptsEmailSignupForm.new(params).call)
+    @data = AcceptsEmailSignupForm.new(params).call
     # rescue
     #   render :action => :new and return
     # end

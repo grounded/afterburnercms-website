@@ -5,22 +5,25 @@ require 'repositories/email_signup'
 
 class AcceptsEmailSignupForm < ::Afterburner::Framework::BaseConductor
   def call
-    save_email_signup
-
-    {:email_signup => @saved_email_signup}
+    persist
+    binding.pry
+    {:email_signup => persisted}
   end
 
   protected
+  attr_accessor :persisted
   def data
     params[:email_signup]
   end
 
   def email_signup
-    Entities::EmailSignup.new params
+    Entities::EmailSignup.new data
   end
 
-  def save_email_signup
-    @saved_email_signup = email_signup_repository.store email_signup.to_hash
+  def persist
+    self.persisted = Entities::EmailSignup.new(
+      email_signup_repository.store(email_signup.to_hash)
+    )
   end
 
   def defaults

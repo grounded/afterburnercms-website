@@ -9,7 +9,7 @@ end
 require 'conductors/accepts_email_signup_form'
 
 describe AcceptsEmailSignupForm do
-  let(:params) { {:email_signup => {:email => "rob@example.com" }} }
+  let(:params) { {:email_signup => {:name => "Rob", :email => "rob@example.com" }} }
   let(:mocks) { {} }
   let(:result) { AcceptsEmailSignupForm.new(params, mocks).call }
 
