@@ -3,7 +3,7 @@ require 'conductors/shows_email_signup_form'
 require 'ostruct'
 
 describe ShowsEmailSignupForm do
-  let(:mocks) {{:presenter_classes => {:page => OpenStruct}}}
+  let(:mocks) { {} }
   let(:params) { {} }
   let(:result) { ShowsEmailSignupForm.new(params, mocks).call }
 

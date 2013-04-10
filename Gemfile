@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
-unless ENV['TRAVIS']
-  ruby "1.9.3"
-end
+
+ruby '2.0.0' unless ENV['TRAVIS']
 
 gem 'rails', github: 'rails/rails'
 gem 'pg', :platform => :ruby
@@ -21,7 +20,7 @@ end
 # Fixes https://github.com/rails/jquery-rails/commit/15b0e68677145906e791c140cff014f43c7bc45d#commitcomment-2909560
 gem 'jquery-rails', :github => 'rails/jquery-rails'
 
-git 'https://github.com/grounded/afterburnercms.git', :branch => 'wip_rearch', :glob => "{,**/*}.gemspec" do
+git 'https://github.com/grounded/afterburnercms.git', :glob => "{,**/*}.gemspec" do
   gem 'abc'
   gem 'abc-adapters'
   gem 'abc-delivery-shared'

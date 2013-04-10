@@ -1,6 +1,7 @@
 require 'ostruct'
 require 'entities/email_signup'
 require 'afterburner/framework/base_conductor'
+require 'repositories/email_signup'
 
 class AcceptsEmailSignupForm < ::Afterburner::Framework::BaseConductor
   def call
@@ -14,8 +15,6 @@ class AcceptsEmailSignupForm < ::Afterburner::Framework::BaseConductor
     params[:email_signup]
   end
 
-  protected
-
   def email_signup
     Entities::EmailSignup.new params
   end
@@ -24,7 +23,6 @@ class AcceptsEmailSignupForm < ::Afterburner::Framework::BaseConductor
     @saved_email_signup = email_signup_repository.store email_signup.to_hash
   end
 
-  private
   def defaults
     {
       :repositories => {

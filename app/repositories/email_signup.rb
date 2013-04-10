@@ -1,8 +1,8 @@
 require 'abc-adapters'
-require 'abc/adapters/persistence/base'
+require 'adapters/persistence/repositories/base'
 
 module Repositories
-  class EmailSignup < Abc::Adapters::Persistence::Base
+  class EmailSignup < Abc::Adapters::Persistence::Repositories::Base
     protected
     def kind
       :email_signup

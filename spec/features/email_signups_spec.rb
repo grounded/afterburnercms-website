@@ -14,7 +14,7 @@ feature "Email signups" do
     title = "Sign up to receive a notification"
     Hyperion.save(:kind => :page, :title => title)
     visit new_email_signup_path
-    within "h1" do
+    within ".container h1" do
       expect(page).to have_text(title)
     end
   end
