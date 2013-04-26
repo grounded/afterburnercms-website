@@ -9,7 +9,9 @@ end
 require 'conductors/accepts_email_signup_form'
 
 describe AcceptsEmailSignupForm do
-  let(:params) { {:email_signup => {:email => "rob@example.com" }} }
+  let(:params) do
+    { :email_signup => {:email => "rob@example.com", :name => "Rob" } }
+  end
   let(:mocks) { {} }
   let(:result) { AcceptsEmailSignupForm.new(params, mocks).call }
 
@@ -18,7 +20,7 @@ describe AcceptsEmailSignupForm do
   end
 
   it "returns a hash containing an email signup" do
-    result[:email_signup].should respond_to(:email)
+    result[:email_signup].should include(:email)
   end
 
   it "hands off its form data to the interactor" do

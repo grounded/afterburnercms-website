@@ -1,5 +1,5 @@
 %section
-  %h1= @data.page.title
+  %h1= page.title
 
   = form_tag(main_app.email_signups_path, :method => :post, :html => {:class => 'form-horizontal'}) do
     .field

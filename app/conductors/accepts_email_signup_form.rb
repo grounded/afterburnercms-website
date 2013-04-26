@@ -6,17 +6,16 @@ require 'repositories/email_signup'
 class AcceptsEmailSignupForm < ::Afterburner::Framework::BaseConductor
   def call
     save_email_signup
-
-    {:email_signup => @saved_email_signup}
+    data
   end
 
   protected
   def data
-    params[:email_signup]
+    {:email_signup => @saved_email_signup}
   end
 
   def email_signup
-    Entities::EmailSignup.new params
+    Entities::EmailSignup.new params[:email_signup]
   end
 
   def save_email_signup
