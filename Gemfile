@@ -24,6 +24,7 @@ gem 'jquery-rails', :github => 'rails/jquery-rails'
 
 git 'https://github.com/grounded/afterburnercms.git', :glob => "{,**/*}.gemspec" do
   gem 'abc'
+  gem 'abc-core'
   gem 'abc-adapters'
   gem 'abc-delivery-shared'
 end

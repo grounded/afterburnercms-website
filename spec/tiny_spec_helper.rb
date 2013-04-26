@@ -2,6 +2,7 @@
 $LOAD_PATH.push File.expand_path('../../app', __FILE__)
 
 require 'abc'
+require 'abc-core'
 
 unless ENV['TRAVIS']
   require 'simplecov'

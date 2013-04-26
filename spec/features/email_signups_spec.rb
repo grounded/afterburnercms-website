@@ -26,7 +26,7 @@ feature "Email signups" do
     click_button "Sign up"
     expect(page).to have_text("You signed up as rob@afterburnercms.com")
     signups = Hyperion.find_by_kind(:email_signup, :filters => [[:email, '=', email]])
-    signups.keys.should include(:email)
+    signups.last.keys.should include(:email)
   end
 
 end
