@@ -10,6 +10,6 @@ class EmailSignupsController < ApplicationController
 
   def create
     render :template => 'email_signups/thank_you',
-           :locals => AcceptsEmailSignupForm.new(params).call[:email_signup]
+           :locals => AcceptsEmailSignupForm.new(params).call
   end
 end
