@@ -1,0 +1,15 @@
+!!! 5
+%html
+  %head
+    %title= "Afterburner CMS"
+    %meta{ :content => "", :name => "description" }
+    %meta{ :content => "", :name => "author" }
+    =stylesheet_link_tag "application"
+  %body
+    %header
+      %h1
+        %a{href: "/"}
+          Afterburner CMS
+
+    %section.container
+      =yield

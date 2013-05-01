@@ -14,7 +14,7 @@ feature "Email signups" do
     title = "Sign up to receive a notification"
     Hyperion.save(:kind => :page, :title => title)
     visit new_email_signup_path
-    within "h1" do
+    within ".container h1" do
       expect(page).to have_text(title)
     end
   end
@@ -25,7 +25,8 @@ feature "Email signups" do
     fill_in "Email", :with => email
     click_button "Sign up"
     expect(page).to have_text("You signed up as rob@afterburnercms.com")
-    Hyperion.find_by_kind(:email_signup, :filter => [[:email, '=', email]]).keys.should include(:email)
+    signups = Hyperion.find_by_kind(:email_signup, :filters => [[:email, '=', email]])
+    signups.last.keys.should include(:email)
   end
 
 end

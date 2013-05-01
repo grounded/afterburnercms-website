@@ -1,22 +1,28 @@
 GIT
-  remote: git://github.com/haml/haml.git
-  revision: ae9c15890e3ebff69cd2fec5c9f069da9ec08320
-  branch: stable
+  remote: git://github.com/grounded/afterburner.git
+  revision: 001baf3f4d1508e0a1f1c1fbbf4db8fb07d8a053
   specs:
-    haml (4.0.1.rc.1)
-      tilt
+    afterburner (0.0.3)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
-  revision: 948fef30464235e7588e34faa513b448a00c0e6b
+  revision: 78d4d7ac5baf4e76a6717f303f51b505c40b9770
   specs:
-    coffee-rails (4.0.0.beta1)
+    coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
 
 GIT
+  remote: git://github.com/rails/jquery-rails.git
+  revision: 28ee0ef4c8486c1e331bbc7f7d0ccbf1b0631af5
+  specs:
+    jquery-rails (2.2.1)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+
+GIT
   remote: git://github.com/rails/rails.git
-  revision: c4a7c31581c8386198317a2385f9c7d462c18497
+  revision: 65850baf984a9349fe96bea136b81eaa36404a02
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -32,15 +38,15 @@ GIT
       builder (~> 3.1.0)
     activerecord (4.0.0.beta1)
       activemodel (= 4.0.0.beta1)
-      activerecord-deprecated_finders (~> 0.0.3)
+      activerecord-deprecated_finders (~> 1.0.1)
       activesupport (= 4.0.0.beta1)
-      arel (~> 4.0.0.beta2)
+      arel (~> 4.0.0)
     activesupport (4.0.0.beta1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
-      tzinfo (~> 0.3.33)
+      tzinfo (~> 0.3.37)
     rails (4.0.0.beta1)
       actionmailer (= 4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -48,62 +54,73 @@ GIT
       activesupport (= 4.0.0.beta1)
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0.beta1)
-      sprockets-rails (~> 2.0.0.rc3)
+      sprockets-rails (~> 2.0.0.rc4)
     railties (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
       rake (>= 0.8.7)
-      rdoc (~> 3.4)
-      thor (>= 0.17.0, < 2.0)
+      thor (>= 0.18.1, < 2.0)
 
 GIT
   remote: git://github.com/rails/sass-rails.git
-  revision: d435679b0fe528b954a9abd0059f975d94707574
+  revision: aeae25d22c8392a8ac0a07c86664d37d6acd9e25
   specs:
-    sass-rails (4.0.0.beta1)
+    sass-rails (4.0.0.rc1)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0.rc0)
-      tilt (~> 1.3)
+      sprockets-rails (~> 2.0.0.rc4)
+
+GIT
+  remote: https://github.com/grounded/afterburnercms.git
+  revision: c1be10cdd6180dfe8b9117393658413c8364d88f
+  glob: {,**/*}.gemspec
+  specs:
+    abc (0.0.3)
+    abc-adapters (0.0.3)
+      abc-core (~> 0.0.3)
+      hyperion-api
+    abc-core (0.0.3)
+      afterburner (= 0.0.3)
+    abc-delivery-shared (0.0.3)
+      abc (= 0.0.3)
+      abc-core (= 0.0.3)
+      activesupport (>= 4.0.0.beta1)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    abc (0.0.2.1)
-    abc-adapters (0.0.2.1)
-      abc (~> 0.0.2.1)
-      hyperion-api
-    activerecord-deprecated_finders (0.0.3)
-    addressable (2.3.3)
-    arel (4.0.0.beta2)
-    atomic (1.0.1)
+    activerecord-deprecated_finders (1.0.1)
+    addressable (2.3.4)
+    arel (4.0.0)
+    atomic (1.1.8)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bourbon (3.1.4)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
-    capybara (2.0.2)
+    capybara (2.1.0)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
-      selenium-webdriver (~> 2.0)
-      xpath (~> 1.0.0)
-    childprocess (0.3.9)
-      ffi (~> 1.0, >= 1.0.11)
+      xpath (~> 2.0)
     coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.1)
+    coffee-script-source (1.6.2)
     data_objects (0.10.10)
       addressable (~> 2.1)
-    diff-lcs (1.2.1)
+    diff-lcs (1.2.4)
     do_postgres (0.10.10)
       data_objects (= 0.10.10)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    ffi (1.4.0)
-    hike (1.2.1)
+    haml (4.0.2)
+      tilt
+    hike (1.2.2)
     hyperion-api (0.2.0)
       uuidtools (= 2.1.3)
     hyperion-postgres (0.2.0)
@@ -112,23 +129,22 @@ GEM
     hyperion-sql (0.2.0)
       hyperion-api (= 0.2.0)
     i18n (0.6.4)
-    jquery-rails (2.2.1)
-      railties (>= 3.0, < 5.0)
-      thor (>= 0.14, < 2.0)
-    json (1.7.7)
     mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
-    mime-types (1.21)
-    minitest (4.6.2)
-    multi_json (1.7.0)
-    newrelic_rpm (3.5.8.72)
-    nokogiri (1.5.6)
-    pg (0.14.1)
+    mime-types (1.23)
+    minitest (4.7.3)
+    multi_json (1.7.2)
+    neat (1.2.1)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
+    newrelic_rpm (3.6.1.87)
+    nokogiri (1.5.9)
+    pg (0.15.1)
     polyglot (0.3.3)
-    pry (0.9.12)
+    pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
       slop (~> 3.4)
@@ -141,13 +157,11 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.0.3)
-    rdoc (3.12.2)
-      json (~> 1.4)
+    rake (10.0.4)
     rspec-core (2.13.1)
     rspec-expectations (2.13.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.13.0)
+    rspec-mocks (2.13.1)
     rspec-rails (2.13.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
@@ -155,56 +169,54 @@ GEM
       rspec-core (~> 2.13.0)
       rspec-expectations (~> 2.13.0)
       rspec-mocks (~> 2.13.0)
-    rubyzip (0.9.9)
-    sass (3.2.7)
-    selenium-webdriver (2.31.0)
-      childprocess (>= 0.2.5)
-      multi_json (~> 1.0)
-      rubyzip
-      websocket (~> 1.0.4)
+    sass (3.2.8)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
     slop (3.4.4)
-    sprockets (2.9.0)
+    sprockets (2.9.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0.rc3)
+    sprockets-rails (2.0.0.rc4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
-    thor (0.17.0)
+    thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.6)
+    tilt (1.3.7)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
     tzinfo (0.3.37)
-    uglifier (1.3.0)
+    uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
     uuidtools (2.1.3)
-    websocket (1.0.7)
-    xpath (1.0.0)
+    xpath (2.0.0)
       nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  abc (~> 0.0.2)
-  abc-adapters (~> 0.0.2)
+  abc!
+  abc-adapters!
+  abc-core!
+  abc-delivery-shared!
   activerecord-jdbcpostgresql-adapter
+  afterburner!
   bootstrap-sass (~> 2.3.0.1)
+  bourbon (~> 3.1.1)
   capybara
   coffee-rails!
-  haml!
+  haml (>= 4.0.1)
   hyperion-postgres
-  jquery-rails
+  jquery-rails!
+  neat (~> 1.2.0)
   newrelic_rpm
   pg
   pry

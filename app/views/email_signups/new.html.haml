@@ -1,19 +1,18 @@
-.row
-  .span6.offset3.well
-    %h1= @data.page.title
-    -# .alert.alert-danger You must specify a name and a valid email!
+%section
+  %h1= page.title
 
-    = form_tag(main_app.email_signups_path, :method => :post, :html => {:class => 'form-horizontal'}) do
-      .control-group
-        = label_tag :'email_signup[name]', "Name", :class => 'control-label'
-        .controls
-          = text_field_tag :'email_signup[name]', nil, :placeholder => 'Name'
+  = form_tag(main_app.email_signups_path, :method => :post, :html => {:class => 'form-horizontal'}) do
+    .field
+      = label_tag :'email_signup[name]', "Name", :class => 'control-label'
+      = text_field_tag :'email_signup[name]', nil, :placeholder => 'Name'
 
-      .control-group
-        = label_tag :'email_signup[email]', "Email", :class => 'control-label'
-        .controls
-          = text_field_tag :'email_signup[email]', nil, :placeholder => 'Email'
+    .field
+      = label_tag :'email_signup[email]', "Email", :class => 'control-label'
+      = text_field_tag :'email_signup[email]', nil, :placeholder => 'Email'
 
-      .control-group
-        .controls
-          = submit_tag "Sign up", :class => 'btn'
+    .actions
+      = submit_tag "Sign up", :class => 'btn'
+
+%aside
+  %p
+    Sign up to stay up to date on what is happening in Afterburner CMS

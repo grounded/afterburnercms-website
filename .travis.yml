@@ -1,5 +1,8 @@
 language: ruby
 bundler_args: --without development
+before_script:
+  - cp config/database.yml.example config/database.yml
+  - bundle exec rake db:setup
 script: bundle exec rspec spec --colour
 rvm:
   - 2.0.0

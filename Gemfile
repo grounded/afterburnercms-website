@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-ruby "1.9.3"
+
+unless ENV['TRAVIS']
+  ruby '2.0.0'
+end
 
 gem 'rails', github: 'rails/rails'
 gem 'pg', :platform => :ruby
@@ -16,10 +19,18 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3.0.1'
 end
 
-gem 'jquery-rails'
-gem 'abc', '~> 0.0.2'
-gem 'abc-adapters', '~> 0.0.2'
-gem 'haml', :github => 'haml/haml', :branch => 'stable'
+# Fixes https://github.com/rails/jquery-rails/commit/15b0e68677145906e791c140cff014f43c7bc45d#commitcomment-2909560
+gem 'jquery-rails', :github => 'rails/jquery-rails'
+
+git 'https://github.com/grounded/afterburnercms.git', :glob => "{,**/*}.gemspec" do
+  gem 'abc'
+  gem 'abc-core'
+  gem 'abc-adapters'
+  gem 'abc-delivery-shared'
+end
+gem 'afterburner', :github => 'grounded/afterburner'
+gem 'haml', '>= 4.0.1'
+
 
 group :development do
   gem 'quiet_assets'
@@ -38,3 +49,6 @@ end
 group :production do
   gem 'newrelic_rpm'
 end
+
+gem "bourbon", "~> 3.1.1"
+gem "neat", "~> 1.2.0"

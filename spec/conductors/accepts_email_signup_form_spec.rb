@@ -7,19 +7,25 @@ module Abc
 end
 
 require 'conductors/accepts_email_signup_form'
+require 'entities/email_signup'
 
 describe AcceptsEmailSignupForm do
-  subject { AcceptsEmailSignupForm }
-  let(:params) { {:email_signup => {:email => "rob@afterburnercms.com" }} }
+  let(:params) do
+    { :email_signup => {:email => "rob@example.com", :name => "Rob" } }
+  end
   let(:mocks) { {} }
-  let(:result) { subject.call(params, mocks) }
+  let(:result) { AcceptsEmailSignupForm.new(params, mocks).call }
 
   it "returns a hash" do
     expect(result).to be_kind_of Hash
   end
 
-  it "returns a hash containing an email signup" do
-    result[:email_signup].should respond_to(:email)
+  it "returns a containing an email signup" do
+    result.keys.should include(:email_signup)
+  end
+
+  it "expects the email signup to be an entity" do
+    result[:email_signup].should be_kind_of Entities::EmailSignup
   end
 
   it "hands off its form data to the interactor" do
